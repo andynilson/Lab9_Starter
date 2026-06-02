@@ -7,6 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Lab 9</title>
 
+  <!--
+    TrackJS goes here after you create your TrackJS trial project.
+    Paste the script tag TrackJS gives you above script.js so it loads first.
+
+    Example format only:
+    <script src="https://cdn.trackjs.com/agent/v3/latest/t.js"></script>
+    <script>
+      window.TrackJS && TrackJS.install({ token: "YOUR_TOKEN_HERE" });
+    </script>
+  -->
+
   <style>
     button {
       margin: 3px;
@@ -24,10 +35,10 @@
     output {
       border: 1px solid gray;
       display: block;
-      height: 18px;
+      min-height: 18px;
       margin-top: 5px;
       padding: 5px;
-      width: 240px;
+      width: 300px;
     }
 
     main {
@@ -42,7 +53,7 @@
       row-gap: 5px;
     }
 
-    #error-btns>* {
+    #error-btns > * {
       padding: 8px 2px;
       width: 122px;
     }
@@ -51,58 +62,43 @@
 
 <body>
   <main>
-    <form>
+    <form id="calculator-form">
       <fieldset>
         <legend>Error Calculator</legend>
-        <input name="first-num" id="first-num" />
-        <select name="operator" id="operator">
+        <input name="first-num" id="first-num" aria-label="First number" />
+        <select name="operator" id="operator" aria-label="Operator">
           <option>+</option>
           <option>-</option>
           <option>*</option>
           <option>/</option>
         </select>
-        <input name="second-num" id="second-num" />
+        <input name="second-num" id="second-num" aria-label="Second number" />
         <button id="calculate">Calculate</button>
         <br />
-        <output></output>
+        <output id="result-output"></output>
       </fieldset>
     </form>
 
-    <section id="error-btns">
-      <button>Console Log</button>
-      <button>Console Error</button>
-      <button>Console Count</button>
-      <button>Console Warn</button>
-      <button>Console Assert</button>
-      <button>Console Clear</button>
-      <button>Console Dir</button>
-      <button>Console dirxml</button>
-      <button>Console Group Start</button>
-      <button>Console Group End</button>
-      <button>Console Table</button>
-      <button>Start Timer</button>
-      <button>End Timer</button>
-      <button>Console Trace</button>
-      <button>Trigger a Global Error</button>
+    <section id="error-btns" aria-label="Console and error demos">
+      <button id="console-log-btn" type="button">Console Log</button>
+      <button id="console-error-btn" type="button">Console Error</button>
+      <button id="console-count-btn" type="button">Console Count</button>
+      <button id="console-warn-btn" type="button">Console Warn</button>
+      <button id="console-assert-btn" type="button">Console Assert</button>
+      <button id="console-clear-btn" type="button">Console Clear</button>
+      <button id="console-dir-btn" type="button">Console Dir</button>
+      <button id="console-dirxml-btn" type="button">Console dirxml</button>
+      <button id="console-group-start-btn" type="button">Console Group Start</button>
+      <button id="console-group-end-btn" type="button">Console Group End</button>
+      <button id="console-table-btn" type="button">Console Table</button>
+      <button id="start-timer-btn" type="button">Start Timer</button>
+      <button id="end-timer-btn" type="button">End Timer</button>
+      <button id="console-trace-btn" type="button">Console Trace</button>
+      <button id="global-error-btn" type="button">Trigger a Global Error</button>
     </section>
   </main>
 
-  <script>
-    let form = document.querySelector('form');
-    form.addEventListener('submit', e => {
-      e.preventDefault();
-      let output = document.querySelector('output');
-      let firstNum = document.querySelector('#first-num').value;
-      let secondNum = document.querySelector('#second-num').value;
-      let operator = document.querySelector('#operator').value;
-      output.innerHTML = eval(`${firstNum} ${operator} ${secondNum}`);
-    });
-
-    let errorBtns = Array.from(document.querySelectorAll('#error-btns > button'));
-
-    // Start your code here
-    // You may move this JS to another file if you wish
-  </script>
+  <script src="script.js"></script>
 </body>
 
 </html>
